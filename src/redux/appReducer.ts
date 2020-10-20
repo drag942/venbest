@@ -1,7 +1,15 @@
 import {Dispatch} from "redux";
 import {getUsers} from "../api/api";
+import {Filter} from "../App";
 
-const initialState = {
+export interface User {
+    name: string,
+    lastname: string,
+    age: number,
+    sex: string,
+}
+
+const initialState:{users: User[], filteredUsers: User[]} = {
     users: [],
     filteredUsers: [],
 };
@@ -34,7 +42,7 @@ const appReducer = (state = initialState, action: any) => {
                                 break;
                             }
                             default: {
-                                filter = !user[key].toLowerCase().includes(action.payload[key].toLowerCase().trim());
+                                filter = !(user[key]).toLowerCase().includes(action.payload[key].toLowerCase().trim());
                             }
                         }
                         if(filter){
@@ -67,7 +75,7 @@ const setUsers = (payload: []) => ({
     payload,
 });
 
-export const filterUsers = (payload: {name?: string, lastname?: string}) => ({
+export const filterUsers = (payload: Filter) => ({
     type: FILTER_USERS,
     payload,
 });

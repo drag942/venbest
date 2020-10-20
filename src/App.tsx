@@ -1,14 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import {filterUsers, getUsersAsyncAction} from "./redux/appReducer";
+import {filterUsers, getUsersAsyncAction, User} from "./redux/appReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {getFilteredUsersSelector} from "./redux/appSelectors";
 
-const App = () => {
+export interface Filter {
+    name?: string,
+    lastname?: string,
+    age?: string,
+    sex:
+        {
+            m: boolean,
+            f: boolean
+        }
+}
+
+
+const App:React.FC = ():React.ReactElement => {
 
       const dispatch = useDispatch();
 
-      const [filter, setFilter] = useState<{name?: string, lastname?: string, age?: string, sex: {m: boolean, f: boolean}}>({sex: {m: true, f: true}});
+      const [filter, setFilter] = useState<Filter>({sex: {m: true, f: true}});
 
       useEffect(() => {
           dispatch(getUsersAsyncAction());
@@ -76,7 +88,7 @@ const App = () => {
                     </div>
                 </div>
                 <div className={'users'}>
-                    {filteredUsers.map((user:any, index: number) => {
+                    {filteredUsers.map((user:User, index: number) => {
                         const gender = user.sex === 'm' ? 'Мужской' : 'Женский';
                         return <div key={index} className={'user'}>
                             <div className={'userName'}>
