@@ -9,7 +9,12 @@ export interface User {
     sex: string,
 }
 
-const initialState:{users: User[], filteredUsers: User[]} = {
+export interface State {
+    users: User[],
+    filteredUsers: User[],
+}
+
+const initialState:State = {
     users: [],
     filteredUsers: [],
 };

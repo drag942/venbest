@@ -2,7 +2,9 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {filterUsers, getUsersAsyncAction, User} from "./redux/appReducer";
 import {useDispatch, useSelector} from "react-redux";
-import {getFilteredUsersSelector} from "./redux/appSelectors";
+import {getFilteredUsersSelector, TState} from "./redux/appSelectors";
+
+
 
 export interface Filter {
     name?: string,
@@ -30,25 +32,25 @@ const App:React.FC = ():React.ReactElement => {
           dispatch(filterUsers(filter))
       }, [dispatch,filter]);
 
-      const filteredUsers  = useSelector(state => getFilteredUsersSelector(state));
+      const filteredUsers  = useSelector((state: TState) => getFilteredUsersSelector(state));
 
-      const onChangeName = (e:React.ChangeEvent<HTMLInputElement>) => {
+      const onChangeName = (e:React.ChangeEvent<HTMLInputElement>):void => {
           setFilter({...filter, name: e.target.value});
       };
 
-      const onChangeLastName = (e:React.ChangeEvent<HTMLInputElement>) => {
+      const onChangeLastName = (e:React.ChangeEvent<HTMLInputElement>):void => {
           setFilter({...filter, lastname: e.target.value});
       };
 
-      const onChangeAge = (e:React.ChangeEvent<HTMLInputElement>) => {
+      const onChangeAge = (e:React.ChangeEvent<HTMLInputElement>):void => {
           setFilter({...filter, age: e.target.value});
       };
 
-      const onChangeMale = (e:React.ChangeEvent<HTMLInputElement>) => {
+      const onChangeMale = (e:React.ChangeEvent<HTMLInputElement>):void => {
           setFilter({...filter, sex: {...filter.sex , m: e.target.checked}});
       };
 
-      const onChangeFemale = (e:React.ChangeEvent<HTMLInputElement>) => {
+      const onChangeFemale = (e:React.ChangeEvent<HTMLInputElement>):void => {
           setFilter({...filter, sex: {...filter.sex , f: e.target.checked}});
       };
 
