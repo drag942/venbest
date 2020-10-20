@@ -1,38 +1,69 @@
 .App {
-  text-align: center;
+    margin-top: 7%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrapper {
+    margin: 0 auto;
+    max-width: 270px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+label {
+    display: flex;
+    justify-content: space-between;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.filter p {
+    text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+.inputContainer {
+    margin-top: 10px;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.checkBoxContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding-right: 22%;
+}
+
+.checkBoxContainer label {
+    display: flex;
+    align-items: center;
+}
+
+.checkBoxContainer input {
+    padding: 0;
+    margin: 0;
+}
+
+.checkBoxContainer label span {
+    font-size: 16px;
+    line-height: 16px;
+    margin-left: 5px;
+}
+
+.users {
+    margin-top: 30px;
+
+}
+
+.user {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px dashed lightgray;
+}
+
+.user:last-child {
+    border-bottom: 1px dashed lightgray;
+}
+
+.userName {
+    display: flex;
+}
+
+.userLastName {
+    margin-left: 10px;
 }
